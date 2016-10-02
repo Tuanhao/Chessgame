@@ -1,12 +1,10 @@
 ------------------------------------------------------------------------
-This is the project README file. Here, you should describe your project.
-Tell the reader (someone who does not know anything about this project)
-all he/she needs to know. The comments should usually include at least:
+Java - Object Oriented Programming - SYSC2004
 ------------------------------------------------------------------------
 
-PROJECT TITLE:
-PURPOSE OF PROJECT:
-VERSION or DATE:
-HOW TO START THIS PROJECT:
-AUTHORS:
-USER INSTRUCTIONS:
+PROJECT TITLE:Chess game
+PURPOSE OF PROJECT:get familliar with Java and object oriented
+START DATE: 31 September 2016
+HOW TO START THIS PROJECT:Open Java package with a Java IDE 
+AUTHORS: Tuan-Hao Chau
+
