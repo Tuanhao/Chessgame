@@ -8,15 +8,27 @@
 public class ChessLocation
 {
     // instance variables - replace the example below with your own
-    private int x;
+    private int row;
+    private int col;
+    //private int location[] = new int [2];
 
     /**
      * Constructor for objects of class ChessLocation
      */
-    public ChessLocation()
+	public ChessLocation() {
+		row = 0;
+		col = 1;   
+	}
+
+    public ChessLocation(int row, int col)
     {
-        // initialise instance variables
-        x = 0;
+        if ( row >= 0 && row <= 7 && col >= 0 && col <= 7) 
+        {
+            this.row = row;
+            this.col = col;
+        } else {
+            System.out.println("supposed from 0 to 7");
+        }
     }
 
     /**
@@ -25,9 +37,12 @@ public class ChessLocation
      * @param  y   a sample parameter for a method
      * @return     the sum of x and y 
      */
-    public int sampleMethod(int y)
+    public int getRow()
     {
-        // put your code here
-        return x + y;
+        return row;
+    }
+    public int getCol()
+    {
+        return col;
     }
 }

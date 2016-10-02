@@ -5,18 +5,20 @@
  * @author  Hao 
  * @version (a version number or a date)
  */
-public class ChessBoard
+public class Chessboard
 {
-    private int Index[][] = new int[8][8];
+    private int board[][] = new int[8][8];
 
     /**
-     * Constructor for objects of class ChessBoard
+     * Constructor for objects of class Chessboard
      */
-    public ChessBoard()
+    public Chessboard()
     {
         for (int row = 0; row < 8; row ++) {
+            System.out.println("");
             for (int col = 0; col < 8; col ++) {
-                Index[row][col] = null;
+                board[row][col] = null;
+                System.out.print(" - ");
             }
         }
     }
@@ -29,7 +31,7 @@ public class ChessBoard
      */
     public boolean isPieceAt(int row,  int col)
     {
-        if (Knight.location.row == row && Knight.location.col == col) {
+        if (board[row][col] != null) {
             return true;
         } else {
             return false;
@@ -38,13 +40,28 @@ public class ChessBoard
     
     public void placePieceAt ( Knight knight, ChessLocation location)
     {
-        knight.location.row = location.row;
-        knight.location.col = location.col;
+        board[location.getRow()][location.getCol()] = 1;
+        knight.location = location;
     }
     
     public void removePiece (ChessLocation location) 
     {
-        location.row = null;
-        location.col = null;
+        board[location.getRow()][location.getCol()] = null;
     }
+    
+    public void printChessboard() 
+    {
+        for (int row = 0; row < 8; row ++) {
+            system.out.println("");
+            for (int col = 0; col < 8; col ++) {
+                if (board[row][col] = 1) {
+                System.out.print(" K ");
+            }else {
+                System.out.print(" - ");
+            }
+            }
+        }
+    }
+
+    
 }

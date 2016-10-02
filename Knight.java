@@ -8,15 +8,18 @@
 public class Knight
 {
     // instance variables - replace the example below with your own
-    private int x;
+    private ChessGame game;
+    private String owner;
+    private ChessLocation location;
 
     /**
      * Constructor for objects of class Knight
      */
-    public Knight()
+    public Knight(String owner, ChessLocation initialLocation , ChessGame game)
     {
-        // initialise instance variables
-        x = 0;
+        this.owner = owner;
+        this.game = game;
+        this.location = initialLocation;
     }
 
     /**
@@ -25,9 +28,9 @@ public class Knight
      * @param  y   a sample parameter for a method
      * @return     the sum of x and y 
      */
-    public int sampleMethod(int y)
+    public void moveTo(ChessLocation newLocation) 
     {
-        // put your code here
-        return x + y;
+        Chessboard Board.removePiece(location);
+        this.location = newLocation;
     }
 }
