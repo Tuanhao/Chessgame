@@ -15,10 +15,6 @@ public class ChessLocation
     /**
      * Constructor for objects of class ChessLocation
      */
-	public ChessLocation() {
-		row = 0;
-		col = 1;   
-	}
 
     public ChessLocation(int row, int col)
     {

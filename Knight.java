@@ -15,6 +15,11 @@ public class Knight
     /**
      * Constructor for objects of class Knight
      */
+    public Knight() {
+        owner = "Player 1";
+        location = new ChessLocation(0,0);
+    }
+
     public Knight(String owner, ChessLocation initialLocation , ChessGame game)
     {
         this.owner = owner;
@@ -30,7 +35,6 @@ public class Knight
      */
     public void moveTo(ChessLocation newLocation) 
     {
-        Chessboard Board.removePiece(location);
         this.location = newLocation;
     }
 }

@@ -8,8 +8,8 @@
 public class ChessGame
 {
     // instance variables - replace the example below with your own
-    private ChessBoard board;
-    private Knight knight;
+    public ChessBoard board;
+    public Knight knight;
 
     /**
      * Constructor for objects of class ChessGame

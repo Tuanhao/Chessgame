@@ -5,14 +5,14 @@
  * @author  Hao 
  * @version (a version number or a date)
  */
-public class Chessboard
+public class ChessBoard
 {
-    private int board[][] = new int[8][8];
+    private Integer board[][] = new Integer[8][8];
 
     /**
      * Constructor for objects of class Chessboard
      */
-    public Chessboard()
+    public ChessBoard()
     {
         for (int row = 0; row < 8; row ++) {
             System.out.println("");
@@ -41,7 +41,7 @@ public class Chessboard
     public void placePieceAt ( Knight knight, ChessLocation location)
     {
         board[location.getRow()][location.getCol()] = 1;
-        knight.location = location;
+        knight.moveTo(location);
     }
     
     public void removePiece (ChessLocation location) 
@@ -49,12 +49,12 @@ public class Chessboard
         board[location.getRow()][location.getCol()] = null;
     }
     
-    public void printChessboard() 
+    public void printChessBoard() 
     {
         for (int row = 0; row < 8; row ++) {
-            system.out.println("");
+            System.out.println("");
             for (int col = 0; col < 8; col ++) {
-                if (board[row][col] = 1) {
+                if (board[row][col] == 1) {
                 System.out.print(" K ");
             }else {
                 System.out.print(" - ");
