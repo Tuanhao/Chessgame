@@ -35,19 +35,29 @@ public class Knight
      */
     public void moveTo(ChessLocation newLocation) 
     {
-        this.location = newLocation;
-        /**if (newLocation.getRow() - location.getRow() == 2 || newLocation.getRow() - location.getRow() == -2){
-            if( newLocation.getCol() - location.getCol() == 1 || newLocation.getCol() - location.getCol() == -1){
-                this.location = newLocation;
-            }else if(newLocation.getRow() - location.getRow() == 1 || newLocation.getRow() - location.getRow() == -1){
-                if( newLocation.getCol() - location.getCol() == 2 || newLocation.getCol() - location.getCol() == -2){
-                this.location = newLocation;
-            }else{
-                System.out.println("your step is in valid");
-         
-            }
+        ChessLocation temp = location;
+        int row = newLocation.getRow() - location.getRow();
+        int col = newLocation.getCol() - location.getCol();
+        row = Math.abs(row);
+        col = Math.abs(col);
+        if (row == 2 && col == 1) {
+            this.location = newLocation;
+        } else if (row == 1 && col == 2) {
+            this.location = newLocation;
+        } else {
+            this.location = temp;
+            System.out.println("Hey there, Invalid step!!!");
         }
-    }*/
+        //this.location = newLocation;
+        /**if ((newLocation.getRow() - location.getRow() == 2 || newLocation.getRow() - location.getRow() == -2) &&( newLocation.getCol() - location.getCol() == 1 || newLocation.getCol() - location.getCol() == -1)) 
+            {
+                this.location = newLocation;
+            }else if((newLocation.getRow() - location.getRow() == 1 || newLocation.getRow() - location.getRow() == -1)&& ( newLocation.getCol() - location.getCol() == 2 || newLocation.getCol() - location.getCol() == -2))
+                {
+                    this.location = newLocation;
+                }else{
+                    this.location = temp;
+                }*/
     }
     
     public ChessLocation getLocation()

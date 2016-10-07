@@ -41,7 +41,8 @@ public class ChessBoard
         ChessLocation prevLocation = knight.getLocation();
         removePiece(prevLocation);
         knight.moveTo(location);
-        board[location.getRow()][location.getCol()] = knight;
+        ChessLocation nextLocation = knight.getLocation();
+        board[nextLocation.getRow()][nextLocation.getCol()] = knight;
     }
     
     public void removePiece (ChessLocation location) 
