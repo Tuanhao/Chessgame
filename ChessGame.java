@@ -9,7 +9,7 @@ public class ChessGame
 {
     // instance variables - replace the example below with your own
     public ChessBoard board;
-    public Knight knight;
+    private Knight knight;
 
     /**
      * Constructor for objects of class ChessGame
@@ -17,7 +17,17 @@ public class ChessGame
     public ChessGame()
     {
         board = new ChessBoard();
-        knight = new Knight();
+        knight = new Knight("player1",new ChessLocation(0,1), this);
         
+    }
+    
+    public ChessBoard getBoard()
+    {
+        return board;
+    }
+    
+    public Knight getKnight()
+    {
+        return knight;
     }
 }

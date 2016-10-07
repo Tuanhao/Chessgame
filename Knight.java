@@ -36,5 +36,22 @@ public class Knight
     public void moveTo(ChessLocation newLocation) 
     {
         this.location = newLocation;
+        /**if (newLocation.getRow() - location.getRow() == 2 || newLocation.getRow() - location.getRow() == -2){
+            if( newLocation.getCol() - location.getCol() == 1 || newLocation.getCol() - location.getCol() == -1){
+                this.location = newLocation;
+            }else if(newLocation.getRow() - location.getRow() == 1 || newLocation.getRow() - location.getRow() == -1){
+                if( newLocation.getCol() - location.getCol() == 2 || newLocation.getCol() - location.getCol() == -2){
+                this.location = newLocation;
+            }else{
+                System.out.println("your step is in valid");
+         
+            }
+        }
+    }*/
+    }
+    
+    public ChessLocation getLocation()
+    {
+        return location;
     }
 }

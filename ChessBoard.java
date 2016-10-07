@@ -7,7 +7,7 @@
  */
 public class ChessBoard
 {
-    private Integer board[][] = new Integer[8][8];
+    private Knight board[][] = new Knight[8][8];
 
     /**
      * Constructor for objects of class Chessboard
@@ -15,10 +15,8 @@ public class ChessBoard
     public ChessBoard()
     {
         for (int row = 0; row < 8; row ++) {
-            System.out.println("");
             for (int col = 0; col < 8; col ++) {
                 board[row][col] = null;
-                System.out.print(" - ");
             }
         }
     }
@@ -40,8 +38,10 @@ public class ChessBoard
     
     public void placePieceAt ( Knight knight, ChessLocation location)
     {
-        board[location.getRow()][location.getCol()] = 1;
+        ChessLocation prevLocation = knight.getLocation();
+        removePiece(prevLocation);
         knight.moveTo(location);
+        board[location.getRow()][location.getCol()] = knight;
     }
     
     public void removePiece (ChessLocation location) 
@@ -54,14 +54,13 @@ public class ChessBoard
         for (int row = 0; row < 8; row ++) {
             System.out.println("");
             for (int col = 0; col < 8; col ++) {
-                if (board[row][col] == 1) {
+                if (board[row][col] != null) {
                 System.out.print(" K ");
             }else {
                 System.out.print(" - ");
             }
             }
         }
+        System.out.println("");
     }
-
-    
 }
