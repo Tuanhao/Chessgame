@@ -15,10 +15,6 @@ public class Knight
     /**
      * Constructor for objects of class Knight
      */
-    public Knight() {
-        owner = "Player 1";
-        location = new ChessLocation(0,0);
-    }
 
     public Knight(String owner, ChessLocation initialLocation , ChessGame game)
     {
@@ -36,28 +32,20 @@ public class Knight
     public void moveTo(ChessLocation newLocation) 
     {
         ChessLocation temp = location;
-        int row = newLocation.getRow() - location.getRow();
-        int col = newLocation.getCol() - location.getCol();
-        row = Math.abs(row);
-        col = Math.abs(col);
-        if (row == 2 && col == 1) {
+        int newRow = newLocation.getRow() - location.getRow();
+        int newCol = newLocation.getCol() - location.getCol();
+        newRow = Math.abs(newRow);
+        newCol = Math.abs(newCol);
+        if (newRow == 2 && newCol == 1) {
             this.location = newLocation;
-        } else if (row == 1 && col == 2) {
+        } else if (newRow == 1 && newCol == 2) {
             this.location = newLocation;
         } else {
             this.location = temp;
-            System.out.println("Hey there, Invalid step!!!");
+            if(newRow != 0 || newCol != 0){
+                System.out.println("Hey there, Invalid step!!!");
+            }
         }
-        //this.location = newLocation;
-        /**if ((newLocation.getRow() - location.getRow() == 2 || newLocation.getRow() - location.getRow() == -2) &&( newLocation.getCol() - location.getCol() == 1 || newLocation.getCol() - location.getCol() == -1)) 
-            {
-                this.location = newLocation;
-            }else if((newLocation.getRow() - location.getRow() == 1 || newLocation.getRow() - location.getRow() == -1)&& ( newLocation.getCol() - location.getCol() == 2 || newLocation.getCol() - location.getCol() == -2))
-                {
-                    this.location = newLocation;
-                }else{
-                    this.location = temp;
-                }*/
     }
     
     public ChessLocation getLocation()

@@ -18,12 +18,8 @@ public class ChessLocation
 
     public ChessLocation(int row, int col)
     {
-        if ( row >= 0 && row <= 7 && col >= 0 && col <= 7){ 
-             this.row = row;
-             this.col = col;
-        }else{
-            System.out.println("supposed from 0 to 7");
-        } 
+        this.row = row;
+        this.col = col;
     }
 
 

@@ -56,10 +56,10 @@ public class ChessBoard
             System.out.println("");
             for (int col = 0; col < 8; col ++) {
                 if (board[row][col] != null) {
-                System.out.print(" K ");
-            }else {
-                System.out.print(" - ");
-            }
+                    System.out.print(" K ");
+                }else {
+                    System.out.print(" - ");
+                }
             }
         }
         System.out.println("");
