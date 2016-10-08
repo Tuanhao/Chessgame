@@ -1,18 +1,20 @@
 
 /**
- * Write a description of class ChessGame here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Class that creates a game that has a board and a knight.
+ *
+ * @author Tuan-Hao Chau 
+ * @version 08/10/16
  */
 public class ChessGame
 {
-    // instance variables - replace the example below with your own
+    // the chess board of the game
     public ChessBoard board;
+    //the knight piece of the game
     private Knight knight;
 
     /**
-     * Constructor for objects of class ChessGame
+     * Construct a new chess board and a new knight of Player 1 with the location
+     * at row 1 column 2.
      */
     public ChessGame()
     {
@@ -21,11 +23,21 @@ public class ChessGame
         
     }
     
+    /**
+     * get the board of this game
+     * 
+     * @return the board in Chessboard type
+     */
     public ChessBoard getBoard()
     {
         return board;
     }
     
+    /**
+     * Get the knight of this game
+     * 
+     * @return the knight in Knight type
+     */
     public Knight getKnight()
     {
         return knight;

@@ -1,16 +1,18 @@
 
 /**
- * Write a description of class ChessBoard here.
+ * A simple model of a chess board. 
+ * The board will be filled with piece for player to move.
  * 
  * @author  Hao 
- * @version (a version number or a date)
+ * @version 08/10/16
  */
 public class ChessBoard
 {
+    // An array that is 8 by 8 in Knight type.
     private Knight board[][] = new Knight[8][8];
 
     /**
-     * Constructor for objects of class Chessboard
+     * Create the chessboard and initialize every tile with null
      */
     public ChessBoard()
     {
@@ -22,10 +24,12 @@ public class ChessBoard
     }
 
     /**
-     * An example of a method - replace this comment with your own
+     * Check if there is a piece at specific row and column.
      * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+     * @param   row   the specific row on the board
+     * @param   col   the specific column on the board
+     * 
+     * @return     true if there is a piece, otherwise false.
      */
     public boolean isPieceAt(int row,  int col)
     {
@@ -36,20 +40,36 @@ public class ChessBoard
         }
     }
     
+    /**
+     * Place a knight piece at specific location 
+     * by removing the current knight piece on the board and place it at the new location
+     * 
+     * @param   knight      the knight about to move
+     * @param   location    the new location 
+     */
     public void placePieceAt ( Knight knight, ChessLocation location)
     {
-        ChessLocation prevLocation = knight.getLocation();
-        removePiece(prevLocation);
+        ChessLocation curLocation = knight.getLocation();
+        removePiece(curLocation);
         knight.moveTo(location);
         ChessLocation nextLocation = knight.getLocation();
         board[nextLocation.getRow()][nextLocation.getCol()] = knight;
     }
     
+    /**
+     * Remove the piece at a specific location by setting that tile to null(empty)
+     * 
+     * @param    location    the location of tile that needs to be clear
+     */
     public void removePiece (ChessLocation location) 
     {
         board[location.getRow()][location.getCol()] = null;
     }
     
+    /**
+     * Print the chess board
+     * Print "K" to indicate the tile is not empty, otherwise "-"
+     */
     public void printChessBoard() 
     {
         for (int row = 0; row < 8; row ++) {

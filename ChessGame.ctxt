@@ -1,9 +1,11 @@
 #BlueJ class context
 comment0.params=
 comment0.target=ChessGame()
-comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ ChessGame\r\n
+comment0.text=\r\n\ Construct\ a\ new\ chess\ board\ and\ a\ new\ knight\ of\ Player\ 1\ with\ the\ location\r\n\ at\ row\ 1\ column\ 2.\r\n
 comment1.params=
 comment1.target=ChessBoard\ getBoard()
+comment1.text=\r\n\ get\ the\ board\ of\ this\ game\r\n\ \r\n\ @return\ the\ board\ in\ Chessboard\ type\r\n
 comment2.params=
 comment2.target=Knight\ getKnight()
+comment2.text=\r\n\ Get\ the\ knight\ of\ this\ game\r\n\ \r\n\ @return\ the\ knight\ in\ Knight\ type\r\n
 numComments=3

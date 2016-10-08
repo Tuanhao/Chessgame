@@ -1,19 +1,21 @@
 
 /**
- * Write a description of class ChessLocation here.
+ * Class that creates the location with specific row and column.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Tuan-Hao Chau 
+ * @version 08/10/16
  */
 public class ChessLocation
 {
-    // instance variables - replace the example below with your own
+    // the row of the location
     private int row;
+    // the column of the location
     private int col;
-    //private int location[] = new int [2];
 
     /**
-     * Constructor for objects of class ChessLocation
+     * Creating the location with specific row and column
+     * @param   row     the row of the board
+     * @param   col     the column of the board
      */
 
     public ChessLocation(int row, int col)
@@ -24,15 +26,20 @@ public class ChessLocation
 
 
     /**
-     * An example of a method - replace this comment with your own
+     * Get the row of the location
      * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+     * @return the row's number
      */
     public int getRow()
     {
         return row;
     }
+    
+     /**
+     * Get the column of the location
+     * 
+     * @return the column's number
+     */
     public int getCol()
     {
         return col;
