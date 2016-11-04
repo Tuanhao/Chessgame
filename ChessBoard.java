@@ -9,7 +9,7 @@
 public class ChessBoard
 {
     // An array that is 8 by 8 in Knight type.
-    private Knight board[][] = new Knight[8][8];
+    private ChessPiece board[][] = new ChessPiece[8][8];
 
     /**
      * Create the chessboard and initialize every tile with null
@@ -40,6 +40,11 @@ public class ChessBoard
         }
     }
     
+    public ChessPiece getPieceAt(ChessLocation location)
+    {
+        return ChessPiece.getPiece(location.getRol(),location.getCol());
+    }
+    
     /**
      * Place a knight piece at specific location 
      * by removing the current knight piece on the board and place it at the new location
@@ -47,13 +52,13 @@ public class ChessBoard
      * @param   knight      the knight about to move
      * @param   location    the new location 
      */
-    public void placePieceAt ( Knight knight, ChessLocation location)
+    public void placePieceAt ( ChessPiece piece, ChessLocation location)
     {
-        ChessLocation curLocation = knight.getLocation();
+        ChessLocation curLocation = piece.getLocation();
         removePiece(curLocation);
-        knight.moveTo(location);
-        ChessLocation nextLocation = knight.getLocation();
-        board[nextLocation.getRow()][nextLocation.getCol()] = knight;
+        piece.moveTo(location);
+        ChessLocation nextLocation = piece.getLocation();
+        board[nextLocation.getRow()][nextLocation.getCol()] = piece;
     }
     
     /**

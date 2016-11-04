@@ -8,7 +8,7 @@
 public class ChessGame
 {
     // the chess board of the game
-    public ChessBoard board;
+    private ChessBoard board;
     //the knight piece of the game
     private Knight knight;
 
