@@ -4,7 +4,7 @@
  * The board will be filled with piece for player to move.
  * 
  * @author  Hao 
- * @version 08/10/16
+ * @version 07/11/16
  */
 public class ChessBoard
 {
@@ -42,7 +42,7 @@ public class ChessBoard
     
     public ChessPiece getPieceAt(ChessLocation location)
     {
-        return ChessPiece.getPiece(location.getRol(),location.getCol());
+        return board[location.getRow()][location.getCol()];
     }
     
     /**
@@ -57,8 +57,6 @@ public class ChessBoard
         ChessLocation curLocation = piece.getLocation();
         removePiece(curLocation);
         piece.moveTo(location);
-        ChessLocation nextLocation = piece.getLocation();
-        board[nextLocation.getRow()][nextLocation.getCol()] = piece;
     }
     
     /**
@@ -73,7 +71,7 @@ public class ChessBoard
     
     /**
      * Print the chess board
-     * Print "K" to indicate the tile is not empty, otherwise "-"
+     * Print id of each piece to indicate the tile is not empty, otherwise "-"
      */
     public void printChessBoard() 
     {
@@ -81,12 +79,23 @@ public class ChessBoard
             System.out.println("");
             for (int col = 0; col < 8; col ++) {
                 if (board[row][col] != null) {
-                    System.out.print(" K ");
+                    ChessLocation location = new ChessLocation(row,col);
+                    ChessPiece piece = this.getPieceAt(location);
+                    System.out.print(" " + piece.getID() + " ");
                 }else {
                     System.out.print(" - ");
                 }
             }
         }
         System.out.println("");
+    }
+    
+    /** get the array list board
+     * 
+     * @return the array list of chess pieces
+     */
+    public ChessPiece[][] getSquare()
+    {
+        return board;
     }
 }

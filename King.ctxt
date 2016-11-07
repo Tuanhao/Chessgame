@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=player\ initial_location\ game
+comment0.target=King(java.lang.String,\ ChessLocation,\ ChessGame)
+comment0.text=\r\n\ Construct\ a\ King\ piece\ for\ the\ game\ with\ 'K'\ as\ the\ piece\ id\ \r\n\ @param\ \ \ owner\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ the\ owner\ of\ the\ King\ piece.\r\n\ @param\ \ \ initialLocation\ \ \ \ \ the\ first\ location\ of\ King\ piece\ when\ it\ is\ created.\r\n\ @param\ \ \ game\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ the\ game\ that\ King\ piece\ is\ participating.\r\n
+comment1.params=destination
+comment1.target=void\ moveTo(ChessLocation)
+comment1.text=\r\n\ Set\ \ piece's\ location\ to\ a\ new\ location\ \r\n\ This\ move\ can\ only\ be\ 1\ step\ any\ where\ surrond\ the\ piece\ otherwise\ print\ "Invalid\ step"\r\n\ Place\ the\ \ piece\ onto\ the\ chess\ board\r\n\ \r\n\ \r\n\ @param\ \ \ destination\ \ \ \ \ The\ new\ location\ that\ \ piece\ is\ heading\ to.\r\n
+numComments=2

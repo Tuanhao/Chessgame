@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=player\ initial_location\ game
+comment0.target=Rook(java.lang.String,\ ChessLocation,\ ChessGame)
+comment0.text=\r\n\ Construct\ a\ Rook\ piece\ for\ the\ game\ with\ 'R'\ as\ the\ piece\ id\ \r\n\ @param\ \ \ owner\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ the\ owner\ of\ the\ Rook\ piece.\r\n\ @param\ \ \ initialLocation\ \ \ \ \ the\ first\ location\ of\ Rook\ piece\ when\ it\ is\ created.\r\n\ @param\ \ \ game\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ the\ game\ that\ Rook\ piece\ is\ participating.\r\n
+comment1.params=destination
+comment1.target=void\ moveTo(ChessLocation)
+comment1.text=\r\n\ Set\ \ piece's\ location\ to\ a\ new\ location\ \r\n\ This\ move\ must\ be\ horizontal\ or\ vertical\ otherwise\ print\ "Invalid\ step"\r\n\ Place\ the\ \ piece\ onto\ the\ chess\ board\r\n\ \r\n\ \r\n\ @param\ \ \ destination\ \ \ \ \ The\ new\ location\ that\ \ piece\ is\ heading\ to.\r\n
+numComments=2

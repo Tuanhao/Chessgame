@@ -3,16 +3,10 @@
  * A class that models a knight that move in L shape on the chess board.
  * 
  * @author Tuan-Hao Chau 
- * @version 08/10/16
+ * @version 07/11/16
  */
-public class Knight
+public class Knight extends ChessPiece 
 {
-    // The game that kinght is in
-    private ChessGame game;
-    // The name of knight's owner
-    private String owner;
-    //The current location of knight
-    private ChessLocation location;
 
     /**
      * Construct a knight piece for the game
@@ -23,48 +17,39 @@ public class Knight
 
     public Knight(String owner, ChessLocation initialLocation , ChessGame game)
     {
-        this.owner = owner;
-        this.game = game;
-        this.location = initialLocation;
+        super(owner, initialLocation, game);
+        super.id = 'N';
     }
 
     /**
-     * Set knight piece's locaation to a new location 
+     * Set knight piece's location to a new location 
      * This move must be a L shape otherwise print "Invalid step"
+     * Place the Knight piece onto the chess board
      * 
-     * @param   newLocation     The new location that knight piece is heading to.
+     * @param   destination     The new location that knight piece is heading to.
      */
-    public void moveTo(ChessLocation newLocation) 
+    public void moveTo(ChessLocation destination) 
     {
-        int newRow = newLocation.getRow() - location.getRow();
-        int newCol = newLocation.getCol() - location.getCol();
-        newRow = Math.abs(newRow);
-        newCol = Math.abs(newCol);
-        if (newRow == 2 && newCol == 1) {
+        int presentRow = super.getLocation().getRow();
+        int presentCol = super.getLocation().getCol();
+        int rowDiff = Math.abs(presentRow - destination.getRow());
+        int colDiff = Math.abs(presentCol - destination.getCol());
+        if (rowDiff == 2 && colDiff == 1 && !(checkLineOfSight(super.getLocation(), destination))) {
             //new row is 2 tiles different and new col is 1 tile different
             // this step is valid
-            this.location = newLocation;
-        } else if (newRow == 1 && newCol == 2) {
+            super.setLocation(destination);
+        } else if (rowDiff == 1 && colDiff == 2 && !(checkLineOfSight(super.getLocation(), destination))) {
             //new row is 1 tiles different and new col is 2 tile different
             // this step is also valid
-            this.location = newLocation;
+            super.setLocation(destination);
         } else {
             //otherwise the step is invalid, and knight piece will have the original location.
-            this.location = location;
-            if(newRow != 0 || newCol != 0){
+            super.setLocation(destination);
+            if(rowDiff != 0 || colDiff != 0){
                 //if player put the same location as current location then this line will not be printed
                 System.out.println("Hey there, Invalid step!!!");
             }
         }
-    }
-    
-    /**
-     * get the current location of the knight
-     * 
-     * @return a chesslocation type location.
-     */
-    public ChessLocation getLocation()
-    {
-        return location;
+        super.getGame().getBoard().getSquare()[getLocation().getRow()][getLocation().getCol()] = this;
     }
 }

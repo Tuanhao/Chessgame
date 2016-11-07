@@ -2,10 +2,7 @@
 comment0.params=owner\ initialLocation\ game
 comment0.target=Knight(java.lang.String,\ ChessLocation,\ ChessGame)
 comment0.text=\r\n\ Construct\ a\ knight\ piece\ for\ the\ game\r\n\ @param\ \ \ owner\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ the\ owner\ of\ the\ knight\ piece.\r\n\ @param\ \ \ initialLocation\ \ \ \ \ the\ first\ location\ of\ knight\ piece\ when\ it\ is\ created.\r\n\ @param\ \ \ game\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ the\ game\ that\ knight\ piece\ is\ participating.\r\n
-comment1.params=newLocation
+comment1.params=destination
 comment1.target=void\ moveTo(ChessLocation)
-comment1.text=\r\n\ Set\ knight\ piece's\ locaation\ to\ a\ new\ location\ \r\n\ This\ move\ must\ be\ a\ L\ shape\ otherwise\ print\ "Invalid\ step"\r\n\ \r\n\ @param\ \ \ newLocation\ \ \ \ \ The\ new\ location\ that\ knight\ piece\ is\ heading\ to.\r\n
-comment2.params=
-comment2.target=ChessLocation\ getLocation()
-comment2.text=\r\n\ get\ the\ current\ location\ of\ the\ knight\r\n\ \r\n\ @return\ a\ chesslocation\ type\ location.\r\n
-numComments=3
+comment1.text=\r\n\ Set\ knight\ piece's\ location\ to\ a\ new\ location\ \r\n\ This\ move\ must\ be\ a\ L\ shape\ otherwise\ print\ "Invalid\ step"\r\n\ Place\ the\ Knight\ piece\ onto\ the\ chess\ board\r\n\ \r\n\ @param\ \ \ destination\ \ \ \ \ The\ new\ location\ that\ knight\ piece\ is\ heading\ to.\r\n
+numComments=2

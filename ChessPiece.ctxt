@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.params=owner\ initialLocation\ game
+comment0.target=ChessPiece(java.lang.String,\ ChessLocation,\ ChessGame)
+comment0.text=\r\n\ Construct\ a\ piece\ with\ owner,\ location,\ and\ what\ game\ it\ is\ in\r\n\ \r\n\ @param\ \ \ owner\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ the\ owner\ of\ the\ piece.\r\n\ @param\ \ \ initialLocation\ \ \ \ \ the\ first\ location\ of\ the\ piece\ when\ it\ is\ created.\r\n\ @param\ \ \ game\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ the\ game\ that\ piece\ is\ participating.\r\n\r\n
+comment1.params=destination
+comment1.target=void\ moveTo(ChessLocation)
+comment1.text=\r\n\ Method\ is\ using\ for\ moving\ the\ piece\ but\ the\ codes\ are\ mostly\ inside\ each\ subclass\r\n
+comment2.params=start\ end
+comment2.target=boolean\ checkLineOfSight(ChessLocation,\ ChessLocation)
+comment2.text=\r\n\ Check\ if\ there\ is\ blocking\ piece\ to\ move\ to\ destination\ based\ on\ piece\ ID\r\n\ \r\n\ @param\ the\ start\ is\ the\ present\ location,\ and\ end\ is\ the\ desintation\r\n\ \r\n\ @return\ true\ if\ there\ is\ a\ blocking\ piece\ otherwise\ false\r\n
+comment3.params=
+comment3.target=char\ getID()
+comment3.text=\r\n\ get\ ID\ of\ the\ piece\r\n\ \r\n\ @return\ the\ char\r\n
+comment4.params=newLocation
+comment4.target=void\ setLocation(ChessLocation)
+comment4.text=\r\n\ set\ the\ location\r\n\ \r\n\ @param\ a\ new\ location\r\n\ \r\n
+comment5.params=
+comment5.target=ChessLocation\ getLocation()
+comment5.text=\r\n\ get\ the\ location\r\n\ \r\n\ @return\ the\ location\ of\ piece\r\n\ \r\n
+comment6.params=
+comment6.target=ChessGame\ getGame()
+comment6.text=\r\n\ get\ the\ game\ that\ the\ piece\ is\ on\r\n\ \r\n\ @return\ the\ game\r\n\ \r\n
+numComments=7

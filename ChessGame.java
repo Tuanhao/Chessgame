@@ -1,26 +1,41 @@
 
 /**
- * Class that creates a game that has a board and a knight.
+ * Class that creates a game that has a board and all the pieces.
  *
  * @author Tuan-Hao Chau 
- * @version 08/10/16
+ * @version 07/11/16
  */
 public class ChessGame
 {
     // the chess board of the game
     private ChessBoard board;
-    //the knight piece of the game
-    private Knight knight;
+    //the player 1 
+    private String player1;
+    // player 2
+    private String player2;
 
     /**
-     * Construct a new chess board and a new knight of Player 1 with the location
-     * at row 1 column 2.
+     * Construct a new chess board and all the pieces for Player 1 with the location
+     * 
+     * @param player 1 and player 2
      */
-    public ChessGame()
+    public ChessGame(String player1, String player2)
     {
         board = new ChessBoard();
-        knight = new Knight("player1",new ChessLocation(0,1), this);
-        
+        this.player1 = player1;
+        this.player2 = player2;
+        new Rook(player1,new ChessLocation(0,0), this);
+        new Rook(player1,new ChessLocation(0,7), this);
+        new Knight(player1,new ChessLocation(0,1), this);
+        new Knight(player1,new ChessLocation(0,6), this);
+        new Bishop(player1,new ChessLocation(0,2), this);
+        new Bishop(player1,new ChessLocation(0,5), this);
+        new Queen(player1,new ChessLocation(0,3), this);
+        new King(player1,new ChessLocation(0,4), this);
+        for (int i = 0; i <8; i++) 
+        {
+            new Pawn(player1,new ChessLocation(1,i), this);
+        }
     }
     
     /**
@@ -33,13 +48,4 @@ public class ChessGame
         return board;
     }
     
-    /**
-     * Get the knight of this game
-     * 
-     * @return the knight in Knight type
-     */
-    public Knight getKnight()
-    {
-        return knight;
-    }
 }

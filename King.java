@@ -1,27 +1,27 @@
 
 /**
- * A class that models a Bishop that move diagonally on the chess board.
+ * A class that models a King that can only move 1 step on the chess board.
  * 
  * @author Tuan-Hao Chau 
  * @version 07/11/16
  */
-public class Bishop extends ChessPiece
+public class King extends ChessPiece
 {
     /**
-     * Construct a Bishop piece for the game with 'B' as the piece id 
-     * @param   owner               the owner of the Bishop piece.
-     * @param   initialLocation     the first location of Bishop piece when it is created.
-     * @param   game                the game that Bishop piece is participating.
+     * Construct a King piece for the game with 'K' as the piece id 
+     * @param   owner               the owner of the King piece.
+     * @param   initialLocation     the first location of King piece when it is created.
+     * @param   game                the game that King piece is participating.
      */
-    public Bishop(String player, ChessLocation initial_location, ChessGame game)
+    public King(String player, ChessLocation initial_location, ChessGame game)
     {
         super(player, initial_location, game);
-        super.id = 'B';
+        super.id = 'K';
     }
 
     /**
      * Set  piece's location to a new location 
-     * This move must be diagonal otherwise print "Invalid step"
+     * This move can only be 1 step any where surrond the piece otherwise print "Invalid step"
      * Place the  piece onto the chess board
      * 
      * 
@@ -33,7 +33,7 @@ public class Bishop extends ChessPiece
         int presentCol = super.getLocation().getCol();
         int rowDiff = Math.abs(presentRow - destination.getRow());
         int colDiff = Math.abs(presentCol - destination.getCol());
-        if (rowDiff == colDiff && !(checkLineOfSight(super.getLocation(), destination)))
+        if ((rowDiff == 1 || colDiff ==1) && !(checkLineOfSight(super.getLocation(), destination)))
         {
             super.setLocation(destination);
         } else 

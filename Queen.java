@@ -1,27 +1,27 @@
 
 /**
- * A class that models a Bishop that move diagonally on the chess board.
+ * A class that models a Queen that move horizontally, vertically, and diagonally on the chess board.
  * 
  * @author Tuan-Hao Chau 
  * @version 07/11/16
  */
-public class Bishop extends ChessPiece
+public class Queen extends ChessPiece
 {
-    /**
-     * Construct a Bishop piece for the game with 'B' as the piece id 
-     * @param   owner               the owner of the Bishop piece.
-     * @param   initialLocation     the first location of Bishop piece when it is created.
-     * @param   game                the game that Bishop piece is participating.
+     /**
+     * Construct a queen piece for the game with 'Q' as the piece id 
+     * @param   owner               the owner of the queen piece.
+     * @param   initialLocation     the first location of queen piece when it is created.
+     * @param   game                the game that queen piece is participating.
      */
-    public Bishop(String player, ChessLocation initial_location, ChessGame game)
+    public Queen(String player, ChessLocation initial_location, ChessGame game)
     {
         super(player, initial_location, game);
-        super.id = 'B';
+        super.id = 'Q';
     }
 
     /**
      * Set  piece's location to a new location 
-     * This move must be diagonal otherwise print "Invalid step"
+     * This move must be horizontal or vertical or diagonal otherwise print "Invalid step"
      * Place the  piece onto the chess board
      * 
      * 
@@ -36,10 +36,17 @@ public class Bishop extends ChessPiece
         if (rowDiff == colDiff && !(checkLineOfSight(super.getLocation(), destination)))
         {
             super.setLocation(destination);
+        } else if (rowDiff == 0 || colDiff == 0)
+        {
+            if (!(checkLineOfSight(super.getLocation(), destination)))
+            {
+                super.setLocation(destination);
+            }
         } else 
         {   
             super.setLocation(super.getLocation());
-            if(rowDiff != 0 || colDiff != 0){
+            if(rowDiff != 0 || colDiff != 0)
+            {
                 //if player put the same location as current location then this line will not be printed
                 System.out.println("Hey there, Invalid step!!!");
             }

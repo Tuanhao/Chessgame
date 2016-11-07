@@ -3,7 +3,7 @@
  * Class that creates the location with specific row and column.
  * 
  * @author Tuan-Hao Chau 
- * @version 08/10/16
+ * @version 07/11/16
  */
 public class ChessLocation
 {
@@ -43,6 +43,23 @@ public class ChessLocation
     public int getCol()
     {
         return col;
+    }
+    
+    /**
+     * Compare two chess location
+     * 
+     * @param     cp       a chess location
+     * 
+     * @return true if it is the same location
+     */
+    public boolean equals(ChessLocation cp)
+    {
+        if (this == cp)
+        {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 

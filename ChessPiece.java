@@ -1,72 +1,187 @@
 
 /**
- * Write a description of class ChessPiece here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Class that is the super class of all pieces
+ *
+ * @author Tuan-Hao Chau 
+ * @version 07/11/16
  */
 public class ChessPiece
 {
-    // instance variables - replace the example below with your own
+    // chess game
     private ChessGame game;
     private String player;
     private ChessLocation location;
+    // the id of the chess piece, depending on the piece
     protected char id;
+   
 
     /**
-     * Constructor for objects of class ChessPiece
+     * Construct a piece with owner, location, and what game it is in
+     * 
+     * @param   owner               the owner of the piece.
+     * @param   initialLocation     the first location of the piece when it is created.
+     * @param   game                the game that piece is participating.
+     *
      */
     public ChessPiece(String owner, ChessLocation initialLocation, ChessGame game)
     {
         player = owner;
         location = initialLocation;
         this.game = game;
+        game.getBoard().placePieceAt(this, initialLocation);
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+     * Method is using for moving the piece but the codes are mostly inside each subclass
      */
-    public void moveTo(ChessLocation newLocation)
+    public void moveTo (ChessLocation destination) 
     {
-                            // check the leaglity
-                            //move to new location if legal by 
-                            //setting location = newlocation
+
     }
-    
+
+     /**
+     * Check if there is blocking piece to move to destination based on piece ID
+     * 
+     * @param the start is the present location, and end is the desintation
+     * 
+     * @return true if there is a blocking piece otherwise false
+     */
     protected boolean checkLineOfSight(ChessLocation start, ChessLocation end)
     {
-        ChessBoard board = ChessGame.getBoard();
-        if (start.getRow() == end.getRow())  
-        {
-            for (int i = 0; i < Math.abs(start.getCol() - end.getCol()); i++)
+        ChessBoard board = game.getBoard();
+        int startRow = start.getRow();
+        int startCol = start.getCol();
+        int endRow = end.getRow();
+        int endCol = end.getCol();
+        if ( id == 'K' || id == 'R'  || id=='Q' ) {
+            if (startRow == endRow && (startCol - endCol) >0 )  
             {
-                if ( board.isPieceAt(start.getRow(), start.getCol() + i) == True) 
-                { 
-                    return True;
-                } else if (board.isPieceAt(start.getRow(), start.getCol() - i) == True)
+                for (int i = 1; i <= Math.abs(startCol - endCol); i++)
                 {
-                    return True;
+                    if (board.isPieceAt(startRow, startCol - i) == true)
+                    {
+                        System.out.println("there's a piece blocking your move");
+                        return true;
+                    }
                 }
-            }
-            return False;
-        }
-        if (start.getCol() == end.getCol())  
-        {
-            for (int i = 0; i < Math.abs(start.getRow() - end.getRow()); i++)
+                return false;
+            } else if (startRow == endRow && (startCol - endCol) < 0 )  
             {
-                if ( board.isPieceAt(start.getRow() + i, start.getCol()) == True) 
-                { 
-                    return True;
-                } else if (board.isPieceAt(start.getRow()- i, start.getCol()) == True)
+                for (int i = 1; i <= Math.abs(startCol - endCol); i++)
                 {
-                    return True;
+                    if (board.isPieceAt(startRow, startCol + i) == true)
+                    {
+                        System.out.println("there's a piece blocking your move");
+                        return true;
+                    }
                 }
+                return false;
             }
-            return False;
+            if (startCol == endCol && (startRow - endRow) > 0)  
+            {
+                for (int i = 1; i <= Math.abs(startRow - endRow); i++)
+                {
+                    if (board.isPieceAt(startRow- i, startCol) == true)
+                    {
+                        System.out.println("there's a piece blocking your move");
+                        return true;
+                    }
+                }
+                return false;
+            }
+            if (startCol == endCol && (startRow - endRow) < 0)  
+            {
+                for (int i = 1; i <= Math.abs(startRow - endRow); i++)
+                {
+                    if (board.isPieceAt(startRow + i, startCol) == true)
+                    {
+                        System.out.println("there's a piece blocking your move");
+                        return true;
+                    }
+                }
+                return false;
+            }
+        } else if (id =='B' || id =='Q') 
+        {
+            if ((startRow - endRow ) > 0 ) 
+            {
+                for (int i = 1; i <= Math.abs(startRow - endRow); i++) 
+                {
+                    if (board.isPieceAt(endRow - i, endCol- i) == true)
+                    {
+                        System.out.println("there's a piece blocking your move");
+                        return true;
+                    }
+                }
+            } else if ((startRow - endRow ) < 0 ) 
+            {
+                for (int i = 1; i <= Math.abs(startRow - endRow); i++) 
+                {
+                    if (board.isPieceAt(endRow + i, endCol+ i) == true)
+                    {
+                        System.out.println("there's a piece blocking your move");
+                        return true;
+                    }
+                }
+            } else 
+            {
+                return false;
+            }
+        } else if ( id=='N' || id =='P') 
+        {
+            if (board.isPieceAt(endRow , endCol) == true)
+            {
+                System.out.println("there's a piece blocking your move");
+                return true;
+            } else
+            {
+                return false;
+            }
         }
+        return false;
+    }
+
+     /**
+     * get ID of the piece
+     * 
+     * @return the char
+     */
+    protected char getID() 
+    {
+        return id;
+    }
+
+     /**
+     * set the location
+     * 
+     * @param a new location
+     * 
+     */
+    public void setLocation(ChessLocation newLocation)
+    {
+        location = newLocation;
+    }
+
+     /**
+     * get the location
+     * 
+     * @return the location of piece
+     * 
+     */
+    public ChessLocation getLocation()
+    {
+        return location;
     }
     
+    /**
+     * get the game that the piece is on
+     * 
+     * @return the game
+     * 
+     */
+    public ChessGame getGame()
+    {
+        return game;
+    }
+
 }
