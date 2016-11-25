@@ -16,7 +16,11 @@ public class King extends ChessPiece
     public King(String player, ChessLocation initial_location, ChessGame game)
     {
         super(player, initial_location, game);
-        super.id = 'K';
+        if (player.equals("player1") {
+            super.id = 'K';
+        } else {
+            super.id = 'k';
+        }
     }
 
     /**
@@ -44,6 +48,6 @@ public class King extends ChessPiece
                 System.out.println("Hey there, Invalid step!!!");
             }
         }
-        super.getGame().getBoard().getSquare()[getLocation().getRow()][getLocation().getCol()] = this;
+        super.moveTo();
     }
 }

@@ -5,12 +5,13 @@
  * @author Tuan-Hao Chau 
  * @version 07/11/16
  */
-public class ChessPiece
+public abstract class ChessPiece implements ChessPieceInterface
 {
     // chess game
     private ChessGame game;
     private String player;
     private ChessLocation location;
+    private ArrayList<Location> threateningLocations;
     // the id of the chess piece, depending on the piece
     protected char id;
    
@@ -26,16 +27,19 @@ public class ChessPiece
     public ChessPiece(String owner, ChessLocation initialLocation, ChessGame game)
     {
         player = owner;
-        location = initialLocation;
+        location = null;
         this.game = game;
+        threatingLocations = new ArrayList<Location>();
         game.getBoard().placePieceAt(this, initialLocation);
     }
 
     /**
      * Method is using for moving the piece but the codes are mostly inside each subclass
      */
-    public void moveTo (ChessLocation destination) 
+    public boolean moveTo (ChessLocation destination) 
     {
+        ChessBoard board = game.getBoard();
+        board.removePiece(destination);
 
     }
 

@@ -36,6 +36,18 @@ public class ChessGame
         {
             new Pawn(player1,new ChessLocation(1,i), this);
         }
+        new Rook(player2,new ChessLocation(7,0), this);
+        new Rook(player2,new ChessLocation(7,7), this);
+        new Knight(player2,new ChessLocation(7,1), this);
+        new Knight(player2,new ChessLocation(7,6), this);
+        new Bishop(player2,new ChessLocation(7,2), this);
+        new Bishop(player2,new ChessLocation(7,5), this);
+        new Queen(player2,new ChessLocation(7,3), this);
+        new King(player2,new ChessLocation(7,4), this);
+        for (int i = 0; i <8; i++) 
+        {
+            new Pawn(player2,new ChessLocation(6,i), this);
+        }
     }
     
     /**
