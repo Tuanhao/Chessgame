@@ -16,7 +16,11 @@ public class Bishop extends ChessPiece
     public Bishop(String player, ChessLocation initial_location, ChessGame game)
     {
         super(player, initial_location, game);
-        super.id = 'B';
+        if (player.equals("player1")) {
+            super.id = 'B';
+        } else {
+            super.id = 'b';
+        }
     }
 
     /**

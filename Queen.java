@@ -16,7 +16,11 @@ public class Queen extends ChessPiece
     public Queen(String player, ChessLocation initial_location, ChessGame game)
     {
         super(player, initial_location, game);
-        super.id = 'Q';
+        if (player.equals("player1")) {
+            super.id = 'Q';
+        } else {
+            super.id = 'q';
+        }
     }
 
     /**

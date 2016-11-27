@@ -16,7 +16,11 @@ public class Rook extends ChessPiece
     public Rook(String player, ChessLocation initial_location, ChessGame game)
     {
         super(player, initial_location, game);
-        super.id = 'R';
+        if (player.equals("player1")) {
+            super.id = 'R';
+        } else {
+            super.id = 'r';
+        }
     }
 
     /**

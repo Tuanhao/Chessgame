@@ -17,7 +17,11 @@ public class Pawn extends ChessPiece
     public Pawn(String player, ChessLocation initial_location, ChessGame game)
     {
         super(player, initial_location, game);
-        super.id = 'P';
+        if (player.equals("player1")) {
+            super.id = 'P';
+        } else {
+            super.id = 'p';
+        }
         firstMove = false;
     }
 

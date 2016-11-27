@@ -18,7 +18,11 @@ public class Knight extends ChessPiece
     public Knight(String owner, ChessLocation initialLocation , ChessGame game)
     {
         super(owner, initialLocation, game);
-        super.id = 'N';
+        if (player.equals("player1")) {
+            super.id = 'N';
+        } else {
+            super.id = 'n';
+        }
     }
 
     /**
