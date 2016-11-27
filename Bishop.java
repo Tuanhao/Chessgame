@@ -31,23 +31,35 @@ public class Bishop extends ChessPiece
      * 
      * @param   destination     The new location that  piece is heading to.
      */
-    public void moveTo(ChessLocation destination)
+    public boolean moveTo(ChessLocation destination)
     {
         int presentRow = super.getLocation().getRow();
         int presentCol = super.getLocation().getCol();
         int rowDiff = Math.abs(presentRow - destination.getRow());
         int colDiff = Math.abs(presentCol - destination.getCol());
-        if (rowDiff == colDiff && !(checkLineOfSight(super.getLocation(), destination)))
+        if (rowDiff == colDiff && !(checkLineOfSight(super.getLocation(), destination)) && !(super.getPlayer().equals(getPieceAt(desitination).getPlayer())))
         {
             super.setLocation(destination);
+            super.moveTo(destination);
         } else 
         {   
             super.setLocation(super.getLocation());
             if(rowDiff != 0 || colDiff != 0){
                 //if player put the same location as current location then this line will not be printed
                 System.out.println("Hey there, Invalid step!!!");
+                return false;
             }
+            return false;
         }
-        super.getGame().getBoard().getSquare()[getLocation().getRow()][getLocation().getCol()] = this;
+    }
+    
+    protected void updateThreateningLocation(ChessLocation newLocation)
+    {
+        ChessPiece piece = getPieceAt(newLocation);
+        if (!(piece.getPlayer().equals(super.getPlayer())) && super.moveTo(newLocation))
+        {
+            super.getThreateningLocation.add(newLocation);
+        } else {
+        }
     }
 }

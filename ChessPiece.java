@@ -1,3 +1,4 @@
+import java.util.*;
 
 /**
  * Class that is the super class of all pieces
@@ -11,7 +12,7 @@ public abstract class ChessPiece implements ChessPieceInterface
     private ChessGame game;
     private String player;
     private ChessLocation location;
-    private ArrayList<Location> threateningLocations;
+    private ArrayList<ChessLocation> threateningLocations;
     // the id of the chess piece, depending on the piece
     protected char id;
    
@@ -29,7 +30,7 @@ public abstract class ChessPiece implements ChessPieceInterface
         player = owner;
         location = null;
         this.game = game;
-        threatingLocations = new ArrayList<Location>();
+        threateningLocations = new ArrayList<ChessLocation>();
         game.getBoard().placePieceAt(this, initialLocation);
     }
 
@@ -39,9 +40,13 @@ public abstract class ChessPiece implements ChessPieceInterface
     public boolean moveTo (ChessLocation destination) 
     {
         ChessBoard board = game.getBoard();
-        board.removePiece(destination);
+        board.removePiece(location);
+        board.placePieceAt(this, destination);
+        return true;
 
     }
+    
+    public abstract void updateThreateningLocation(ChessLocation newLocation); 
 
      /**
      * Check if there is blocking piece to move to destination based on piece ID
@@ -186,6 +191,16 @@ public abstract class ChessPiece implements ChessPieceInterface
     public ChessGame getGame()
     {
         return game;
+    }
+    
+    public String getPlayer()
+    {
+        return player;
+    }
+    
+    public  ArrayList<ChessLocation> getThreateningLocations()
+    {
+        return threateningLocations;
     }
 
 }

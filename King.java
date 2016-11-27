@@ -37,12 +37,11 @@ public class King extends ChessPiece
         int presentCol = super.getLocation().getCol();
         int rowDiff = Math.abs(presentRow - destination.getRow());
         int colDiff = Math.abs(presentCol - destination.getCol());
-        if ((rowDiff == 1 || colDiff ==1) && !(checkLineOfSight(super.getLocation(), destination)))
+        if ((rowDiff == 1 || colDiff ==1) && !(checkLineOfSight(super.getLocation(), destination)) && !(super.getPlayer().equals(getPieceAt(desitination).getPlayer())))
         {
             super.setLocation(destination);
-            super.moveTo();
-        } else 
-        {   
+            super.moveTo(destination);
+        } else {  
             super.setLocation(super.getLocation());
             if(rowDiff != 0 || colDiff != 0){
                 //if player put the same location as current location then this line will not be printed
@@ -53,21 +52,20 @@ public class King extends ChessPiece
         }
     }
     
-    protected void updateThreateningLocation(ChessLocation newLocation)
+    public void updateThreateningLocation(ChessLocation newLocation)
     {
         ChessPiece piece = getPieceAt(newLocation);
-        if (!(piece.getPlayer().equals(this.getPlayer())) && this.moveTo(newLocation))
+        if (!(piece.getPlayer().equals(super.getPlayer())) && super.moveTo(newLocation))
         {
-            this.getThreateningLocation.add(newLocation);
-        } else
-        {
+            super.getThreateningLocation.add(newLocation);
+        } else {
         }
     }
     
     public ChessPiece locationInDanger(ChessLocation destinationLocation)
     {
         ChessBoard board = this.getGame().getBoard();
-        for (int x = 0; i < 8; i++)
+        for (int x = 0; x < 8; i++)
         {
             for (int y = 0; y < 8; y++)
             {
@@ -75,7 +73,7 @@ public class King extends ChessPiece
                 {
                     ChessPiece piece = getPieceAt(ChessLocation(x,y));
                     piece.updateThreateningLocation(destinationLocation);
-                    if (piece.getThreateningLocation.conatins(this.getLocation()))
+                    if (piece.getThreateningLocation.conatins(super.getLocation()))
                     {
                         return piece;
                     }
@@ -84,5 +82,32 @@ public class King extends ChessPiece
         }
         return null;
     }
+    
+    public boolean anyMovesLeft()
+    {
+        ChessBoard board = super.getGame().getBoard();
+        int row = super.getLocation().getRow();
+        int col = super.getLocation().getCol();
+        for (int x = -1; x < 2; x++ )
+        {
+            for (int y = -1; y < 2; y++ )
+            {
+                if (this.moveTo(ChessLocation(row, col)) && board[row+x][col+y] == null && this.locationInDanger(ChessLocation(row, col)) == null)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
+    public ChessPiece check()
+    {
+        if (this.locationInDanger(super.getLocation()) == null)
+        {
+            return null;
+        } else {
+            return this.locationInDanger(super.getLocation());
+        }
+    }
 }

@@ -20,10 +20,13 @@ public class ChessLocation
 
     public ChessLocation(int row, int col)
     {
-        this.row = row;
-        this.col = col;
+        if (row < 0 || row > 7 || col < 0 || col > 7) {
+            System.out.println("supposed from 0 to 7");
+        }else {
+            this.row = row;
+            this.col = col;
+        }
     }
-
 
     /**
      * Get the row of the location
@@ -34,8 +37,8 @@ public class ChessLocation
     {
         return row;
     }
-    
-     /**
+
+    /**
      * Get the column of the location
      * 
      * @return the column's number
@@ -44,7 +47,7 @@ public class ChessLocation
     {
         return col;
     }
-    
+
     /**
      * Compare two chess location
      * 

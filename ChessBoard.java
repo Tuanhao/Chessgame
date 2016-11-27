@@ -54,9 +54,8 @@ public class ChessBoard
      */
     public void placePieceAt ( ChessPiece piece, ChessLocation location)
     {
-        ChessLocation curLocation = piece.getLocation();
-        removePiece(curLocation);
-        piece.moveTo(location);
+        board[location.getRow()][location.getCol()] = piece;
+        piece.setLocation(location);
     }
     
     /**

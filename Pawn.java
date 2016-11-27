@@ -33,38 +33,66 @@ public class Pawn extends ChessPiece
      * 
      * @param   destination     The new location that  piece is heading to.
      */
-    public void moveTo(ChessLocation destination)
+    public boolean moveTo(ChessLocation destination)
     {
         int presentRow = super.getLocation().getRow();
         int presentCol = super.getLocation().getCol();
-        int rowDiff = Math.abs(presentRow - destination.getRow());
-        int colDiff = Math.abs(presentCol - destination.getCol());
+        if (super.getPlayer().equals("player1")) {
+            int rowDiff = -(presentRow - destination.getRow());
+            int colDiff = -(presentCol - destination.getCol());
+        } else {
+            int rowDiff = presentRow - destination.getRow();
+            int colDiff = presentCol - destination.getCol();
+        }
         if (firstMove)
         {
             if ( rowDiff ==1 && !(checkLineOfSight(super.getLocation(), destination)))
             {
                 super.setLocation(destination);
-            } else 
-            {   
+                super.moveTo(destination);
+            } else if (rowDiff ==1  && colDiff ==1 && !(super.getPlayer().equals(getPieceAt(desitination).getPlayer())))
+            {
+                super.setLocation(destination);
+                super.moveTo(destination);
+            } else {   
                 super.setLocation(super.getLocation());
                 if(rowDiff != 0 || colDiff != 0){
                     //if player put the same location as current location then this line will not be printed
                     System.out.println("Hey there, Invalid step!!!");
+                    return false;
                 }
+                return false;
             }
         } else {
             if (rowDiff == 1 || rowDiff == 2) {
                 super.setLocation(destination);
                 firstMove = true;
+                super.moveTo(destination);
+            }else if (rowDiff ==1  && colDiff ==1 && !(super.getPlayer().equals(getPieceAt(desitination).getPlayer()))) 
+            {
+                 super.setLocation(destination);
+                firstMove = true;
+                super.moveTo(destination);
             }else 
             {   
                 super.setLocation(super.getLocation());
                 if(rowDiff != 0 || colDiff != 0){
                     //if player put the same location as current location then this line will not be printed
                     System.out.println("Hey there, Invalid step!!!");
+                    return false;
                 }
+                return false;
             }
         }
-        super.getGame().getBoard().getSquare()[getLocation().getRow()][getLocation().getCol()] = this;
+    }
+
+    protected void updateThreateningLocation(ChessLocation newLocation)
+    {
+        ChessPiece piece = getPieceAt(newLocation);
+        if (!(piece.getPlayer().equals(super.getPlayer())) && super.moveTo(newLocation))
+        {
+            super.getThreateningLocation.add(newLocation);
+        } else {
+        }
     }
 }
