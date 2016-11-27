@@ -19,4 +19,6 @@ comment5.text=\r\n\ Print\ the\ chess\ board\r\n\ Print\ id\ of\ each\ piece\ to
 comment6.params=
 comment6.target=ChessPiece[][]\ getSquare()
 comment6.text=\ get\ the\ array\ list\ board\r\n\ \r\n\ @return\ the\ array\ list\ of\ chess\ pieces\r\n
-numComments=7
+comment7.params=id
+comment7.target=King\ findKing(char)
+numComments=8

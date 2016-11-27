@@ -60,4 +60,13 @@ public class ChessGame
         return board;
     }
     
+    public String nextPlayer(String curPlayer)
+    {
+        if (curPlayer.equals(player1)) {
+            return player2;
+        } else {
+            return player1;
+        }
+    }
+    
 }

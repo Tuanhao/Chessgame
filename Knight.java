@@ -18,6 +18,7 @@ public class Knight extends ChessPiece
     public Knight(String owner, ChessLocation initialLocation , ChessGame game)
     {
         super(owner, initialLocation, game);
+        String player = super.getPlayer();
         if (player.equals("player1")) {
             super.id = 'N';
         } else {
@@ -38,12 +39,13 @@ public class Knight extends ChessPiece
         int presentCol = super.getLocation().getCol();
         int rowDiff = Math.abs(presentRow - destination.getRow());
         int colDiff = Math.abs(presentCol - destination.getCol());
-        if (rowDiff == 2 && colDiff == 1 && !(checkLineOfSight(super.getLocation(), destination)) && !(super.getPlayer().equals(getPieceAt(desitination).getPlayer()))) {
+        ChessPiece piece = super.getGame().getBoard().getPieceAt(destination);
+        if (rowDiff == 2 && colDiff == 1 && !(checkLineOfSight(super.getLocation(), destination)) && !(super.getPlayer().equals(piece.getPlayer()))) {
             //new row is 2 tiles different and new col is 1 tile different
             // this step is valid
             super.setLocation(destination);
             super.moveTo(destination);
-        } else if (rowDiff == 1 && colDiff == 2 && !(checkLineOfSight(super.getLocation(), destination)) && !(super.getPlayer().equals(getPieceAt(desitination).getPlayer()))) {
+        } else if (rowDiff == 1 && colDiff == 2 && !(checkLineOfSight(super.getLocation(), destination)) && !(super.getPlayer().equals(piece.getPlayer()))) {
             //new row is 1 tiles different and new col is 2 tile different
             // this step is also valid
             super.setLocation(destination);
@@ -58,14 +60,15 @@ public class Knight extends ChessPiece
             }
             return false;
         }
+        return false;
     }
     
     protected void updateThreateningLocation(ChessLocation newLocation)
     {
-        ChessPiece piece = getPieceAt(newLocation);
-        if (!(piece.getPlayer().equals(super.getPlayer())) && super.moveTo(newLocation))
+        ChessPiece piece = super.getGame().getBoard().getPieceAt(newLocation);
+        if (!(piece.equals(super.getPlayer())) && super.moveTo(newLocation))
         {
-            super.getThreateningLocation.add(newLocation);
+            super.getThreateningLocations().add(newLocation);
         } else {
         }
     }

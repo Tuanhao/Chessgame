@@ -39,12 +39,12 @@ public class ChessBoard
             return false;
         }
     }
-    
+
     public ChessPiece getPieceAt(ChessLocation location)
     {
         return board[location.getRow()][location.getCol()];
     }
-    
+
     /**
      * Place a knight piece at specific location 
      * by removing the current knight piece on the board and place it at the new location
@@ -57,7 +57,7 @@ public class ChessBoard
         board[location.getRow()][location.getCol()] = piece;
         piece.setLocation(location);
     }
-    
+
     /**
      * Remove the piece at a specific location by setting that tile to null(empty)
      * 
@@ -67,7 +67,7 @@ public class ChessBoard
     {
         board[location.getRow()][location.getCol()] = null;
     }
-    
+
     /**
      * Print the chess board
      * Print id of each piece to indicate the tile is not empty, otherwise "-"
@@ -88,7 +88,7 @@ public class ChessBoard
         }
         System.out.println("");
     }
-    
+
     /** get the array list board
      * 
      * @return the array list of chess pieces
@@ -96,5 +96,23 @@ public class ChessBoard
     public ChessPiece[][] getSquare()
     {
         return board;
+    }
+
+    public King findKing(char id) {
+        for (int row = 0; row < 8; row ++) {
+            for (int col = 0; col < 8; col ++) {
+                if (board[row][col] != null) {
+                    ChessLocation location = new ChessLocation(row,col);
+                    ChessPiece piece = this.getPieceAt(location);
+                    if (piece.getID() == id) {
+                        if (piece instanceof King) {
+                            King king = (King) piece;
+                            return king;
+                        }
+                    }
+                }
+            }
+        }
+        return null;
     }
 }

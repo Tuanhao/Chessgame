@@ -37,11 +37,12 @@ public class Queen extends ChessPiece
         int presentCol = super.getLocation().getCol();
         int rowDiff = Math.abs(presentRow - destination.getRow());
         int colDiff = Math.abs(presentCol - destination.getCol());
-        if (rowDiff == colDiff && !(checkLineOfSight(super.getLocation(), destination)) && !(super.getPlayer().equals(getPieceAt(desitination).getPlayer())))
+        ChessPiece piece = super.getGame().getBoard().getPieceAt(destination);
+        if (rowDiff == colDiff && !(checkLineOfSight(super.getLocation(), destination)) && !(super.getPlayer().equals(piece.getPlayer())))
         {
             super.setLocation(destination);
             super.moveTo(destination);
-        } else if ((rowDiff == 0 || colDiff == 0) && !(checkLineOfSight(super.getLocation(), destination)) && !(super.getPlayer().equals(getPieceAt(desitination).getPlayer())))
+        } else if ((rowDiff == 0 || colDiff == 0) && !(checkLineOfSight(super.getLocation(), destination)) && !(super.getPlayer().equals(piece.getPlayer())))
         {
                 super.setLocation(destination);
                 super.moveTo(destination);
@@ -55,14 +56,15 @@ public class Queen extends ChessPiece
             }
             return false;
         }
+        return false;
     }
     
     protected void updateThreateningLocation(ChessLocation newLocation)
     {
-        ChessPiece piece = getPieceAt(newLocation);
-        if (!(piece.getPlayer().equals(super.getPlayer())) && super.moveTo(newLocation))
+        ChessPiece piece = super.getGame().getBoard().getPieceAt(newLocation);
+        if (!(piece.equals(super.getPlayer())) && super.moveTo(newLocation))
         {
-            super.getThreateningLocation.add(newLocation);
+            super.getThreateningLocations().add(newLocation);
         } else {
         }
     }

@@ -5,4 +5,6 @@ comment0.text=\r\n\ Construct\ a\ new\ chess\ board\ and\ all\ the\ pieces\ for\
 comment1.params=
 comment1.target=ChessBoard\ getBoard()
 comment1.text=\r\n\ get\ the\ board\ of\ this\ game\r\n\ \r\n\ @return\ the\ board\ in\ Chessboard\ type\r\n
-numComments=2
+comment2.params=curPlayer
+comment2.target=java.lang.String\ nextPlayer(java.lang.String)
+numComments=3

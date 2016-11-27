@@ -46,7 +46,7 @@ public abstract class ChessPiece implements ChessPieceInterface
 
     }
     
-    public abstract void updateThreateningLocation(ChessLocation newLocation); 
+    protected abstract void updateThreateningLocation(ChessLocation newLocation); 
 
      /**
      * Check if there is blocking piece to move to destination based on piece ID

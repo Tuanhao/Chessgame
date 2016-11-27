@@ -14,16 +14,18 @@ public class PlayGame
         System.out.println("Welcome to simple chess game");
         System.out.println("This chessgame uses row and column to play manipulate the piece");
         System.out.println("The rows and columns are from 0 to 7");
-        ChessGame newgame = new ChessGame("player1","player2");
-        ChessBoard board = newgame.getBoard();
+        ChessGame newGame = new ChessGame("player1","player2");
+        ChessBoard board = newGame.getBoard();
         board.printChessBoard();
         System.out.println("Your game is set up with player 1 and player 2.");
         boolean playing = true;
         Scanner user_input = new Scanner(System.in);
+        String curPlayer = "Player1";
 
         while ( playing ){
             // ask for the row of desire location, or player can 
             // type quit to quit
+            System.out.println(curPlayer + "'s turn");
             System.out.println("You have 3 options : move, reset, quit");
             System.out.println("Please type out the option you want");
             String input0 = user_input.next();
@@ -33,11 +35,17 @@ public class PlayGame
                 playing = false;
             } else if ("reset".equals(input0)) {
                 ChessGame newgame = new ChessGame("player1","player2");
-                ChessBoard board = newgame.getBoard();
                 board.printChessBoard();
                 System.out.println("Your game is reset.");
             }else if ("move".equals(input0)){
-                ChessPiece check = check();
+                char id;
+                if (curPlayer.equals("player1")) {
+                    id = 'K';
+                } else{
+                    id = 'k';
+                }
+                King king = board.findKing(id);
+                ChessPiece check = king.check();
                 if (check != null) {
                     System.out.println("check");
                 }
@@ -53,9 +61,11 @@ public class PlayGame
                     // then we move on to ask for the destination 
                     ChessLocation location = new ChessLocation(row,col);
                     ChessPiece pieceToMove = board.getPieceAt(location);
-                    if (pieceToMove == null) {
+                    if (pieceToMove == null ) {
                         System.out.println("Please do not choose an empty location");
-                    } else {
+                    } else if (!pieceToMove.getPlayer().equals(curPlayer)){
+                        System.out.println("Please do not choose opponent's piece");
+                    } else{
                         System.out.println("What is the row of your desire move?");
                         String input3 = user_input.next();
                         System.out.println("What is the column of your desire move?");
@@ -69,6 +79,7 @@ public class PlayGame
                             if (pieceToMove.moveTo(destination)) {
                                 //  move is finished , let opponent make a move
                                 board.printChessBoard();
+                                curPlayer = newGame.nextPlayer(curPlayer);
                             }else{
                                 //not a valid move, ask for another move
                                 System.out.println("Please pick a different move.");
