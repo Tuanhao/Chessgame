@@ -1,9 +1,6 @@
 
 /**
- * Write a description of interface ChessPieceInterface here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * ChessPieceInterface is for forcing the moveTo method in the ChessPiece class
  */
 public interface ChessPieceInterface
 {

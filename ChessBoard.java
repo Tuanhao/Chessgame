@@ -52,7 +52,7 @@ public class ChessBoard
      * @param   knight      the knight about to move
      * @param   location    the new location 
      */
-    public void placePieceAt ( ChessPiece piece, ChessLocation location)
+    public void placePieceAt (ChessPiece piece, ChessLocation location)
     {
         board[location.getRow()][location.getCol()] = piece;
         piece.setLocation(location);

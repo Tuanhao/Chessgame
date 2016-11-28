@@ -1,7 +1,7 @@
 import java.util.*;
 
 /**
- * Class that is the super class of all pieces
+ * Class that is the super class of all pieces and also implements the ChessPieceInterface
  *
  * @author Tuan-Hao Chau 
  * @version 07/11/16
@@ -43,7 +43,6 @@ public abstract class ChessPiece implements ChessPieceInterface
         board.removePiece(location);
         board.placePieceAt(this, destination);
         return true;
-
     }
     
     protected abstract void updateThreateningLocation(ChessLocation newLocation); 

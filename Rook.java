@@ -40,28 +40,29 @@ public class Rook extends ChessPiece
         ChessPiece piece = super.getGame().getBoard().getPieceAt(destination);
         if (rowDiff == 0 && colDiff != 0 && !(checkLineOfSight(super.getLocation(), destination)) && !(super.getPlayer().equals(piece.getPlayer())))
         {
-            super.setLocation(destination);
             super.moveTo(destination);
+            super.setLocation(destination);
+            return true;
         } else if (rowDiff != 0 && colDiff == 0 && !(checkLineOfSight(super.getLocation(), destination)) && !(super.getPlayer().equals(piece.getPlayer())))
         {
-            super.setLocation(destination);
             super.moveTo(destination);
+            super.setLocation(destination);
+            return true;
         } else {  
             super.setLocation(super.getLocation());
             if(rowDiff != 0 || colDiff != 0){
                 //if player put the same location as current location then this line will not be printed
-                System.out.println("Hey there, Invalid step!!!");
+                //System.out.println("Hey there, Invalid step!!!");
                 return false;
             }
             return false;
         }
-        return false;
     }
     
     protected void updateThreateningLocation(ChessLocation newLocation)
     {
         ChessPiece piece = super.getGame().getBoard().getPieceAt(newLocation);
-        if (!(piece.equals(super.getPlayer())) && super.moveTo(newLocation))
+        if (!(piece.getPlayer().equals(super.getPlayer())) && this.moveTo(newLocation))
         {
             super.getThreateningLocations().add(newLocation);
         } else {

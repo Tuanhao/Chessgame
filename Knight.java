@@ -43,30 +43,31 @@ public class Knight extends ChessPiece
         if (rowDiff == 2 && colDiff == 1 && !(checkLineOfSight(super.getLocation(), destination)) && !(super.getPlayer().equals(piece.getPlayer()))) {
             //new row is 2 tiles different and new col is 1 tile different
             // this step is valid
-            super.setLocation(destination);
             super.moveTo(destination);
+            super.setLocation(destination);
+            return true;
         } else if (rowDiff == 1 && colDiff == 2 && !(checkLineOfSight(super.getLocation(), destination)) && !(super.getPlayer().equals(piece.getPlayer()))) {
             //new row is 1 tiles different and new col is 2 tile different
             // this step is also valid
-            super.setLocation(destination);
             super.moveTo(destination);
+            super.setLocation(destination);
+            return true;
         } else {
             //otherwise the step is invalid, and knight piece will have the original location.
             super.setLocation(destination);
             if(rowDiff != 0 || colDiff != 0){
                 //if player put the same location as current location then this line will not be printed
-                System.out.println("Hey there, Invalid step!!!");
+                //System.out.println("Hey there, Invalid step!!!");
                 return false;
             }
             return false;
         }
-        return false;
     }
     
     protected void updateThreateningLocation(ChessLocation newLocation)
     {
         ChessPiece piece = super.getGame().getBoard().getPieceAt(newLocation);
-        if (!(piece.equals(super.getPlayer())) && super.moveTo(newLocation))
+        if (!(piece.getPlayer().equals(super.getPlayer())) && this.moveTo(newLocation))
         {
             super.getThreateningLocations().add(newLocation);
         } else {
